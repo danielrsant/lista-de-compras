@@ -158,6 +158,13 @@ export class AppComponent implements OnDestroy {
 
   onSave(): void {
     if (this.operation === Operation.NEW) {
+      const invalid = this.dataSourceBase.find(
+        (element) => element.name === this.form.get('name')?.value
+      );
+      if (invalid) {
+        alert('Produto já existente!');
+        return;
+      }
       this.dataSource = [
         { ...this.form.getRawValue(), id: this.dataSourceBase.length + 1 },
         ...this.dataSourceBase,

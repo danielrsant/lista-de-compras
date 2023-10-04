@@ -1,0 +1,28 @@
+<app-header
+  [title]="title"
+  [type]="'form'"
+  [operation]="operation"
+  [saveDisabled]="form?.invalid"
+  (edit)="onEdit()"
+  (save)="onSave()"
+  (close)="onClose()"
+></app-header>
+
+<div class="m-8 p-4 card">
+  <form [formGroup]="form" class="mt-2">
+    <mat-form-field appearance="fill" class="mr-2 w-full">
+      <mat-label>Id</mat-label>
+      <input matInput formControlName="id" placeholder="" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="mr-2 w-full">
+      <mat-label>Produto</mat-label>
+      <input matInput formControlName="name" placeholder="" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="mr-2 w-full">
+      <mat-label>Quantidade</mat-label>
+      <input matInput type="number" formControlName="qtd" placeholder="" />
+    </mat-form-field>
+  </form>
+</div>

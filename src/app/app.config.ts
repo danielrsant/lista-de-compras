@@ -9,10 +9,12 @@ import {
 } from '@angular/router';
 
 import { appRoutes } from './app.routes';
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
+    provideToastr(),
     provideHttpClient(),
     provideRouter(
       appRoutes,

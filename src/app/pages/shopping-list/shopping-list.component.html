@@ -1,0 +1,26 @@
+<app-drawer [opened]="openedDrawer" [template]="templateForm">
+  <app-header
+    [title]="title"
+    [operation]="operation"
+    [showFilter]="true"
+    (add)="onAdd()"
+    (search)="onSearch($event, dataSourceBase)"
+  ></app-header>
+
+  <app-table
+    [dataSource]="dataSource"
+    [displayedColumns]="displayedColumns"
+    (clickRow)="onClickRow($event)"
+    (deleteItem)="onDeleteItem($event)"
+  ></app-table>
+</app-drawer>
+
+<ng-template #templateForm>
+  <app-form-shopping-list
+    *ngIf="openedDrawer"
+    [list]="listEdit"
+    [operation]="operation"
+    (save)="onSave($event)"
+    (close)="onCloseDrawer()"
+  ></app-form-shopping-list>
+</ng-template>

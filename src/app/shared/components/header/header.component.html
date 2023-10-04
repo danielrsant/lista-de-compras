@@ -1,0 +1,62 @@
+<ng-container *ngIf="type === 'default'; else form">
+  <mat-toolbar color="primary" class="header-default">
+    <mat-toolbar-row class="justify-between">
+      <div>{{ title }}</div>
+
+      <form [formGroup]="formFilter" class="mt-2 text-center">
+        <mat-form-field appearance="fill" class="mr-2">
+          <mat-label>Filtro</mat-label>
+          <input matInput formControlName="filter" placeholder="" />
+        </mat-form-field>
+      </form>
+
+      <button
+        *ngIf="operation === 'INDEX'"
+        mat-stroked-button
+        (click)="onAdd()"
+      >
+        <mat-icon>add</mat-icon>
+        <span class="ml-2 fs-14px">Adicionar</span>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</ng-container>
+
+<ng-template #form>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row class="justify-between">
+      <div>{{ title }}</div>
+      <div class="flex-row">
+        <button
+          *ngIf="operation === 'VIEW'"
+          mat-stroked-button
+          matTooltip="Editar"
+          (click)="onEdit()"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          *ngIf="operation == 'NEW' || operation == 'EDIT'"
+          mat-stroked-button
+          matTooltip="Salvar"
+          (click)="onSave()"
+          [disabled]="saveDisabled"
+          class="ml-2"
+        >
+          <mat-icon>save</mat-icon>
+        </button>
+
+        <button
+          *ngIf="operation !== 'INDEX'"
+          mat-stroked-button
+          matTooltip="Fechar"
+          (click)="onClose()"
+          class="ml-2"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</ng-template>

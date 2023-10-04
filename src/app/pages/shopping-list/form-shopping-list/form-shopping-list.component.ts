@@ -78,6 +78,7 @@ export class FormShoppingListComponent implements OnChanges {
     this.operation = Operation.EDIT;
     this.title = 'Editando #' + this.list.id;
     this.form.enable();
+    this.form.get('id')?.disable();
   }
 
   onSave(): void {
